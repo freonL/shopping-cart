@@ -13,14 +13,14 @@ class Product extends React.Component {
     this.handleMinus = this.handleMinus.bind(this);
   }
 
-  handleCounterChange = () => {
-    this.props.onCounterChange( this.state.qty )
+  handleCounterChange = (val) => {
+    this.props.onCounterChange( val )
   }
 
   handleMinus = (event) => {
     if (this.state.qty > 0) {
       this.setState({qty: this.state.qty -1}, () => {
-        this.handleCounterChange()
+        this.handleCounterChange(-1)
       });
       
     }
@@ -28,7 +28,7 @@ class Product extends React.Component {
 
   handlePlus = (event) => {
     this.setState({qty: this.state.qty +1}, () => {
-      this.handleCounterChange()
+      this.handleCounterChange(+1)
     });
     
 

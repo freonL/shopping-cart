@@ -39,7 +39,7 @@ class App extends React.Component {
   }
 
   handleCounterChange = (newVal) => {
-    this.setState({total: newVal})
+    this.setState({total: this.state.total + newVal})
   }
 
   render () {
