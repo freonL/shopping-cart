@@ -8,13 +8,13 @@ import Product from './container/Product';
 const DUMMY_DATA = [
   {
     name: "Apple",
-    category: "Fruit",
+    category: "Fruit & Veg",
     price: 4.5,
     pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/310968.jpg"
   },
   {
     name: "Strawberry",
-    category: "Fruit",
+    category: "Fruit & Veg",
     price: 12,
     pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/144607.jpg"
 
@@ -25,6 +25,22 @@ const DUMMY_DATA = [
     category: "Meet",
     price: 17,
     pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/577860.jpg"
+
+  },
+
+  {
+    name: "Ginger Beer",
+    category: "Drinks",
+    price: 2.15,
+    pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/180891.jpg"
+
+  },
+
+  {
+    name: "Water",
+    category: "Drinks",
+    price: 1.40,
+    pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/769629.jpg"
 
   },
 ];
@@ -44,9 +60,9 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
-        <Cart counter={this.state.total}/>
-        <div>{
+      <div className="App ">
+        <Cart total={this.state.total}/>
+        <div className="products card-columns mt-2"> {
           DUMMY_DATA.map((data,i) => {
             return <Product key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>
           })
