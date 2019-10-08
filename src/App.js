@@ -1,7 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import Cart from './container/Cart'
+// import logo from './logo.svg';
+
 import './App.css';
+import Cart from './container/Cart'
+import Filter from './container/Filter'
 import Product from './container/Product';
 
 
@@ -58,7 +60,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total:0
+      total: 0,
+      keyword: ""
     }
   }
 
@@ -66,13 +69,28 @@ class App extends React.Component {
     this.setState({total: this.state.total + newVal})
   }
 
+  handleFilter = (keyword) => {
+    console.log(keyword)
+    this.setState({
+      keyword: keyword
+    })
+  }
+
   render () {
     return (
       <div className="App ">
         <Cart total={this.state.total}/>
+        <Filter onFilterChange={ (keyword) => this.handleFilter(keyword) }/>
         <div className="products card-columns mt-2"> {
           DUMMY_DATA.map((data,i) => {
-            return <Product key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>
+            if (this.state.keyword === '') {
+              return (<Product key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
+            } else {
+              if (data.name.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1 || data.category.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1) {
+                return (<Product key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
+              }
+            }
+
           })
         }</div>
       </div>

@@ -11,24 +11,36 @@ class Product extends React.Component {
 
     this.handlePlus = this.handlePlus.bind(this);
     this.handleMinus = this.handleMinus.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleCounterChange = (val) => {
-    this.props.onCounterChange( val )
+    this.props.onCounterChange( val );
+  }
+
+  handleChange = (event) => {
+    let delta =  event.target.value - this.state.qty;
+    this.setState({
+      qty: event.target.value
+    }, () => {
+      this.handleCounterChange(delta);
+    });
   }
 
   handleMinus = (event) => {
     if (this.state.qty > 0) {
-      this.setState({qty: this.state.qty -1}, () => {
-        this.handleCounterChange(-1)
+      this.setState({
+        qty: Number(this.state.qty) -1
+      }, () => {
+        this.handleCounterChange(-1);
       });
 
     }
   }
 
   handlePlus = (event) => {
-    this.setState({qty: this.state.qty +1}, () => {
-      this.handleCounterChange(+1)
+    this.setState({qty: Number(this.state.qty) +1}, () => {
+      this.handleCounterChange(+1);
     });
 
 
@@ -37,12 +49,11 @@ class Product extends React.Component {
   render () {
     return (
       <div className="Product card">
-        
 
         <div className="card-body">
           <h5 className="card-title">{this.props.product.name}</h5>
-          <img src={this.props.product.pic} className="card-img"></img>
-          <p class="card-text">{this.props.product.category} <span className="float-right">${this.props.product.price}</span></p>
+          <img src={this.props.product.pic} className="card-img" alt=""></img>
+          <p className="card-text">{this.props.product.category} <span className="float-right">${this.props.product.price}</span></p>
 
           <div className="row">
             <div className="col-sm-6">
@@ -50,11 +61,11 @@ class Product extends React.Component {
                 <div className="input-group-prepend">
                   <button className="btn-minus btn btn-outline-secondary" onClick={this.handleMinus}>-</button>
                 </div>
-                <input type="text" class="form-control" value={this.state.qty}/>
+                <input type="text" className="form-control" value={this.state.qty} onChange={this.handleChange}/>
                 {/* <b>{this.state.qty}</b> */}
 
-                <div class="input-group-append">
-                  <button className="btn-plus btn btn-outline-secondary" onClick={this.handlePlus}>+</button>
+                <div className="input-group-append">
+                  <button className="btn-plus btn btn-outline-success" onClick={this.handlePlus}><i className="fa fa-plus"></i></button>
                 </div>
 
               </div>
