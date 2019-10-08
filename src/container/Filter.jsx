@@ -23,6 +23,7 @@ class Filter extends React.Component {
       keyword: ""
     }, () => {
       this.props.onFilterChange( this.state.keyword);
+      this.filterInput.focus();
     })
   }
 
@@ -38,7 +39,7 @@ class Filter extends React.Component {
   render() {
     return (<form className="form-inline mt-2 px-2 row" onSubmit={this.handleSubmit}>
       <div className="input-group col">
-        <input type="text" className="form-control col" value={this.state.keyword} onChange={this.handleChange} placeholder="Search name or category"/>
+        <input type="text" className="form-control col" value={this.state.keyword} onChange={this.handleChange} placeholder="Search name or category" ref={(input) => { this.filterInput = input; }} />
         <div className="input-group-append">
           <button type="button" className="btn btn-outline-secondary" onClick={this.handleClear}><i className="fa fa-close"></i></button>
         </div>

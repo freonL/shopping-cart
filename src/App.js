@@ -70,7 +70,7 @@ class App extends React.Component {
   }
 
   handleFilter = (keyword) => {
-    console.log(keyword)
+    // console.log(keyword)
     this.setState({
       keyword: keyword
     })

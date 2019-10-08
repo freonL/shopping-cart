@@ -4,7 +4,7 @@ import './Cart.css';
 class Cart extends React.Component {
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <nav  className="header-cart navbar navbar-dark bg-primary">
         <h1 className="navbar-brand" >Shopping Cart</h1>
