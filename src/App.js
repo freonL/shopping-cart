@@ -22,7 +22,7 @@ const DUMMY_DATA = [
 
   {
     name: "Beef Mince",
-    category: "Meet",
+    category: "Meat",
     price: 17,
     pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/577860.jpg"
 
@@ -41,6 +41,14 @@ const DUMMY_DATA = [
     category: "Drinks",
     price: 1.40,
     pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/769629.jpg"
+
+  },
+
+  {
+    name: "English Muffin",
+    category: "Bakery",
+    price: 2,
+    pic: "https://cdn0.woolworths.media/content/wowproductimages/medium/224737.jpg"
 
   },
 ];
