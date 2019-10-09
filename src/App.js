@@ -84,10 +84,12 @@ class App extends React.Component {
         <div className="products card-columns mt-2"> {
           DUMMY_DATA.map((data,i) => {
             if (this.state.keyword === '') {
-              return (<Product key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
+              return (<Product show={true} key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
             } else {
               if (data.name.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1 || data.category.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1) {
-                return (<Product key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
+                return (<Product show={true} key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
+              } else {
+                return (<Product show={false} key={i} product={data} onCounterChange={ (newVal) => this.handleCounterChange(newVal)}></Product>);
               }
             }
 

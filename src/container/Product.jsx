@@ -47,8 +47,16 @@ class Product extends React.Component {
   }
 
   render () {
+    let cls;
+    if (this.props.show === true) {
+      cls = " Product card"
+    } else {
+      cls = " Product card d-none"
+
+    }
+
     return (
-      <div className="Product card">
+      <div className={cls}>
 
         <div className="card-body">
           <h5 className="card-title">{this.props.product.name}</h5>
