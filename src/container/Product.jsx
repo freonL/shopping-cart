@@ -60,11 +60,14 @@ class Product extends React.Component {
 
         <div className="card-body">
           <h5 className="card-title">{this.props.product.name}</h5>
-          <img src={this.props.product.pic} className="card-img" alt=""></img>
+          <div className="align-center">
+            <img src={this.props.product.pic} className="card-img" alt=""></img>
+
+          </div>
           <p className="card-text">{this.props.product.category} <span className="float-right">${this.props.product.price}</span></p>
 
           <div className="row">
-            <div className="col-sm-6">
+            <div className="col-lg-6 col-sm-8">
               <div className="input-group">
                 <div className="input-group-prepend">
                   <button className="btn-minus btn btn-outline-secondary" onClick={this.handleMinus}>-</button>
@@ -78,7 +81,7 @@ class Product extends React.Component {
 
               </div>
             </div>
-            <div className="col-sm-6 text-right">
+            <div className="col-lg-6 col-sm-4 text-right">
               ${ Math.round( this.state.qty * this.props.product.price * 100) / 100 }
             </div>
           </div>
